@@ -1,0 +1,17 @@
+version: '3.7'
+
+services:
+  web:
+    environment:
+      - BUILD_ENV=development
+      - ALLOWED_HOSTS=*
+      - SITE_NAME=Shortcut
+      - SITE_DOMAIN=s.hach.dev
+      - SECRET_KEY=*y)h,3@@Xr#d>H-WN,^HWIi}!3AuiO-ag<|49`1DwJreQ%S@H=|VKC/2J<?r~ja
+      - FRONTEND_URL=localhost:8000
+    volumes:
+      - .:/opt/shortcut/
+    command: python src/app/manage.py run
+
+    ports:
+      - 8000:8000

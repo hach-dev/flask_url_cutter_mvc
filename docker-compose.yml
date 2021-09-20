@@ -1,0 +1,20 @@
+version: '3.7'
+
+services:
+  db:
+    image: postgres:11
+    environment:
+      - POSTGRES_USER=short_db_user
+      - POSTGRES_PASSWORD=password
+    volumes:
+      - db-data:/var/lib/postgresql/data/
+  web:
+    build: .
+    environment:
+      - DATABASE_URL=postgresql://short_db_user:password@db/short_db_user
+    depends_on:
+      - db
+
+
+volumes:
+  db-data:
